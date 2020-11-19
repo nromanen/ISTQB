@@ -1,0 +1,910 @@
+{
+	"info": {
+		"_postman_id": "6ec97875-8243-4d87-b472-b65305488a58",
+		"name": "Geo citizen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Default",
+			"item": [
+				{
+					"name": "Auth/Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "89e407cb-ec65-45f0-b50a-b635953d6711",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "cc08f742-6ee7-4011-9890-eed1b1c09a4e",
+								"exec": [
+									"var url = pm.environment.get(\"BASE_URL\") + \"/Authentication/Login\";",
+									"",
+									"var request = {",
+									"    url: url,",
+									"    method: 'POST', ",
+									"    header: 'Content-Type:application/json',",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify({",
+									"            \"email\": pm.environment.get(\"Manager\"),",
+									"            \"password\": pm.environment.get(\"Manager_1\")",
+									"        })",
+									"    }",
+									"};",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login?login=Manager&password=Manager_1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "Manager"
+								},
+								{
+									"key": "password",
+									"value": "Manager_1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "099d4b66-1494-43d8-b933-c6a7661943f6",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "656c3470-1438-4323-a2e3-6ee78584fe80",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Issue-Management-Controller",
+			"item": [
+				{
+					"name": "Admin/Issues",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f17199be-e4b2-4cc1-a50e-40d4a794b57e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/Hidden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8a7aa6e3-1b37-4010-be9e-c41e5e6a6167",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 2500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/hidden",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"hidden"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/Author/Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0fb286d7-884e-401f-88f7-540b68375d4d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 1500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/author/467",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"author",
+								"467"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/Closed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34097d02-df35-46d5-a173-5fbaaf91a8a9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/closed",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"closed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/Opened",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6c1413e4-95a4-4673-bf7c-f290bbae762a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/opened",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"opened"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/Search/{query}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "feb51523-d8ac-4608-985e-02d88a72f484",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 2500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/search/%22hidden%22",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"search",
+								"%22hidden%22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/Visible",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "62b85463-750e-425d-b57c-81fb3b096635",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/visible",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"visible"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/{closed}/{hidden}/{type}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "25dcc090-a357-43ad-8e82-0b271adcf05a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/true/true/%22ROLE_ADMIN%22",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"true",
+								"true",
+								"%22ROLE_ADMIN%22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/{type}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3f933eaa-6895-4632-a8ad-3b8159b670c2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/%22ROLE_USER%22",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"%22ROLE_USER%22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/{Id}/Close",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7a252cf0-3d3f-4339-8eaa-c9a64eb26947",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 2500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/361/close",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"361",
+								"close"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/{Id}/Hide",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d076bd4-f841-4142-8e4e-103c7c29ced2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/440/hide?id=440",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"440",
+								"hide"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "440"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin/Issues/{Id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a815eec9-2727-407b-b367-4b7c20919a4e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/issues/hidden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6fb1a902-fbfa-4853-956b-578098a98bbe",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/hidden",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"hidden"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/issues/opened",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4595c747-efc9-409e-93e6-1316e64b609f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/opened",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"opened"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/issues/visible",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3496c6df-915f-43be-b78f-589b65db884f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/visible",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"visible"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/issues/closed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f498e482-a256-4158-a862-0b62ff1fe5db",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/admin/issues/closed",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"admin",
+								"issues",
+								"closed"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "42cbc26b-d7d3-43b4-b9cb-27ac15aef426",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "78fc664f-5a77-47f7-9d66-e17281718c9d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
