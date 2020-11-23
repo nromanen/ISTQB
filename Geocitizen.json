@@ -103,12 +103,9 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "https://geocitizen.herokuapp.com/auth/login?login=PlainUser&password=PlainUser_1",
-							"protocol": "https",
+							"raw": "{{BASE_URL}}/auth/login?login=PlainUser&password=PlainUser_1",
 							"host": [
-								"geocitizen",
-								"herokuapp",
-								"com"
+								"{{BASE_URL}}"
 							],
 							"path": [
 								"auth",
@@ -744,12 +741,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://geocitizen.herokuapp.com/map",
-							"protocol": "https",
+							"raw": "{{BASE_URL}}/map",
 							"host": [
-								"geocitizen",
-								"herokuapp",
-								"com"
+								"{{BASE_URL}}"
 							],
 							"path": [
 								"map"
@@ -764,12 +758,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://geocitizen.herokuapp.com/issues/types",
-							"protocol": "https",
+							"raw": "{{BASE_URL}}/issues/types",
 							"host": [
-								"geocitizen",
-								"herokuapp",
-								"com"
+								"{{BASE_URL}}"
 							],
 							"path": [
 								"issues",
@@ -785,12 +776,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://geocitizen.herokuapp.com/issues?size=150",
-							"protocol": "https",
+							"raw": "{{BASE_URL}}/issues?size=150",
 							"host": [
-								"geocitizen",
-								"herokuapp",
-								"com"
+								"{{BASE_URL}}"
 							],
 							"path": [
 								"issues"
@@ -820,12 +808,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://geocitizen.herokuapp.com/map/issue",
-							"protocol": "https",
+							"raw": "{{BASE_URL}}/map/issue",
 							"host": [
-								"geocitizen",
-								"herokuapp",
-								"com"
+								"{{BASE_URL}}"
 							],
 							"path": [
 								"map",
@@ -851,12 +836,9 @@
 							]
 						},
 						"url": {
-							"raw": "https://geocitizen.herokuapp.com/issues/455",
-							"protocol": "https",
+							"raw": "{{BASE_URL}}/issues/455",
 							"host": [
-								"geocitizen",
-								"herokuapp",
-								"com"
+								"{{BASE_URL}}"
 							],
 							"path": [
 								"issues",
